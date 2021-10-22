@@ -31,7 +31,7 @@ public class LoginWindow implements IWindow {
         IWindow window = Windows.GetWindow(Strings.MAIN_MENU);
         if (window != null) {
             window.setMessage(response);
-            return window;
+            return window.show();
         }
         else{
             return null;
