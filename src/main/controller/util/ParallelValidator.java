@@ -11,7 +11,10 @@ public abstract class ParallelValidator {
 
     public void validate(IEntity entity){
         checkTypeAndValidate(entity);
-        validator.validate(entity);
+
+        if(validator != null){
+            validator.validate(entity);
+        }
     }
 
     public ArrayList<String> getErrorMessages(){

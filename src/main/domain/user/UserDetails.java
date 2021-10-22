@@ -10,6 +10,10 @@ public class UserDetails extends User implements IEntity {
     public UserType userType;
     public String UserName;
 
+    public UserDetails() {
+        this.password = new Password();
+    }
+
     public ArrayList<IEntity> getInnerEntitiesByType(Class<?> cls){
         var array = super.getInnerEntitiesByType(cls);
 

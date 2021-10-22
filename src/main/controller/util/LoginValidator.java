@@ -29,18 +29,18 @@ public class LoginValidator extends ParallelValidator{
 
 
     private void validatePasswordLength(Password password){
-        if (password.password.length() < 8){
+        if (password.password.length() < 3){
             errorMessages.add("Password field is too short");
             return;
         }
 
-        if (password.password.length() > 32){
+        if (password.password.length() > 100){
             errorMessages.add("Password field is too long");
         }
     }
 
     private void validatePasswordAgainstGivenUser(UserLogin userLogin){
-        if (!(userLogin.email == userDetails.email && Objects.equals(userLogin.password.password, userDetails.password.password))){
+        if (!(Objects.equals(userLogin.email.email, userDetails.email.email) && Objects.equals(userLogin.password.password, userDetails.password.password))){
             errorMessages.add("Wrong email or password");
         }
     }

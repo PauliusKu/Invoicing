@@ -7,6 +7,9 @@ import main.domain.user.UserDetails;
 public class Users implements IUsers {
 
     public UserDetails getUserByEmail(Email email) {
-        return null;
+        UserDetails userDetails = new UserDetails();
+        userDetails.email.email = "admin";
+        userDetails.password.password = "admin";
+        return userDetails;
     }
 }

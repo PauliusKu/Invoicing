@@ -8,6 +8,10 @@ public class UserLogin extends User implements IEntity {
     public Password password;
     public UserType userType;
 
+    public UserLogin() {
+        this.password = new Password();
+    }
+
     public ArrayList<IEntity> getInnerEntitiesByType(Class<?> cls){
         var array = super.getInnerEntitiesByType(cls);
 

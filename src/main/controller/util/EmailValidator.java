@@ -10,6 +10,10 @@ public class EmailValidator extends ParallelValidator{
         this.validator = validator;
     }
 
+    public EmailValidator(){
+        this.validator = null;
+    }
+
     @Override
     protected void checkTypeAndValidate(IEntity entity) {
         Email email;
