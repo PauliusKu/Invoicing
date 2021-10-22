@@ -15,6 +15,7 @@ public class MockLoginReader implements IInputReader {
     @Override
     public String readString() {
         if (stringNr == 0) {
+            stringNr++;
             return email;
         }
         else {

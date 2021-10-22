@@ -1,12 +1,9 @@
 import main.client.Client;
+import main.client.Config;
 import main.client.mocks.MockLoginPrinter;
 import main.client.mocks.MockLoginReader;
-import main.controller.access.LoginController;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,8 +13,9 @@ class Login {
     public void testLoginSuccessScenario() {
         //when
         MockLoginPrinter mockLoginPrinter = new MockLoginPrinter();
-        MockLoginReader mockLoginReader = new MockLoginReader("admin", "admin");
-        Client.run(mockLoginReader, mockLoginPrinter);
+        Config.INPUT_READER = new MockLoginReader("admin", "admin");
+        Config.OUTPUT_PRINTER = mockLoginPrinter;
+        Client.run();
         List<String> outputs = mockLoginPrinter.getOutputs();
         String loginWindowName = outputs.get(0);
         String loginMessage = outputs.get(1);

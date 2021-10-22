@@ -6,6 +6,7 @@ import main.client.interfaces.IOutputPrinter;
 import main.client.interfaces.IWindow;
 
 public class Client {
-    public static void run(IInputReader inputReader, IOutputPrinter outputPrinter){
+    public static void run(){
+        Windows.GetWindow(Config.START_WINDOW).show();
     }
 }
