@@ -8,5 +8,5 @@ public class Config {
     public static IInputReader INPUT_READER;
     public static IOutputPrinter OUTPUT_PRINTER;
     public static boolean TEST_MODE = true;
-    public static int EXIT_AFTER = 5;
+    public static int EXIT_AFTER = 1;
 }
