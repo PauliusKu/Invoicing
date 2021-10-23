@@ -60,7 +60,7 @@ public class AddClientWindow implements IWindow {
 
     @Override
     public IWindow show() {
-        outputPrinter.printTitle(Strings.ADD_CLIENT);
+        outputPrinter.printTitle(Strings.NEW_CLIENT);
         printMessage();
         if (checkExit()){
             return null;
@@ -79,6 +79,7 @@ public class AddClientWindow implements IWindow {
         clientDetails.add(organization);
         clientDetails.add(email);
         Map<String, Object> response = ClientsController.addClient(Config.TOKEN, clientDetails);
+        Config.TOKEN = (String) response.get(Strings.TOKEN);
         Config.WINDOW_CHANGES++;
         if (response.containsKey(Strings.MESSAGE_KEY)){
             return onSuccess(response);

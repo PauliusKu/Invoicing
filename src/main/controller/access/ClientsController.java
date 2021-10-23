@@ -52,7 +52,7 @@ public class ClientsController extends Controller {
             return;
         }
 
-        response.put(ResponseKey.MESSAGE.toString(), "Client was created");
+        response.put(ResponseKey.MESSAGE.toString(), "Success: Client was added");
     }
 
     private static void collectClients(){
