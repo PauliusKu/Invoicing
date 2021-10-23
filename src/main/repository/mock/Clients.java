@@ -7,18 +7,26 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Clients implements IClients {
-    @Override
-    public ArrayList<Client> getAllClients() {
-        Client client = new Client();
-        client.firstName = "John";
-        client.lastName = "Johnson";
-        client.email.email = "j.johnson@gmail.com";
-        client.organisation = "Company";
-        client.invoicedAmount = new BigDecimal(5500);
-        client.receivedAmount = new BigDecimal(4750);
 
-        var list = new ArrayList<Client>();
-        list.add(client);
-        return list;
+    public static ArrayList<Client> clients = new ArrayList<>();
+
+    public Clients(){
+        if (clients.isEmpty()) {
+            Client client = new Client();
+            client.firstName = "John";
+            client.lastName = "Johnson";
+            client.email.email = "j.johnson@gmail.com";
+            client.organisation = "Company";
+            client.invoicedAmount = new BigDecimal(5500);
+            client.receivedAmount = new BigDecimal(4750);
+        }
+    }
+
+    public ArrayList<Client> getAllClients() {
+        return clients;
+    }
+
+    public boolean addOneClient(Client client){
+        return  clients.add(client);
     }
 }

@@ -5,6 +5,7 @@ import main.domain.user.Email;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Client implements IEntity {
     public String firstName;
@@ -27,4 +28,12 @@ public class Client implements IEntity {
         if (cls == Email.class) {array.add(email); }
         return array;
     }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return Objects.equals(email, client.email);
+    }
+
 }

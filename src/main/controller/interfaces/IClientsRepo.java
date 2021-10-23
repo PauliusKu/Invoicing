@@ -7,4 +7,5 @@ import java.util.ArrayList;
 public interface IClientsRepo {
 
     ArrayList<Client> getAllClients();
+    boolean addOneClient(Client client);
 }
