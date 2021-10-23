@@ -4,6 +4,7 @@ import main.domain.client.Client;
 import main.repository.common.IClients;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Clients implements IClients {
 
@@ -17,6 +18,11 @@ public class Clients implements IClients {
 
     @Override
     public void clear() {
+
+    }
+
+    @Override
+    public void prepare(List<String> dataList) {
 
     }
 }

@@ -5,6 +5,8 @@ import main.repository.common.IUsers;
 import main.domain.user.Email;
 import main.domain.user.UserDetails;
 
+import java.util.List;
+
 public class Users implements IUsers {
 
     public UserDetails getUserByEmail(Email email) {
@@ -13,6 +15,11 @@ public class Users implements IUsers {
 
     @Override
     public void clear() {
+
+    }
+
+    @Override
+    public void prepare(List<String> dataList) {
 
     }
 }
