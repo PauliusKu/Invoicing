@@ -14,7 +14,7 @@ public class Clients {
     public void testViewClientsScenario() {
         MockPrinter mockPrinter = new MockPrinter();
         Config.EXIT_AFTER_WINDOW_CHANGES = 3;
-        Config.INPUT_READER = new MockReader(List.of("admin", "admin", "1"));
+        Config.INPUT_READER = new MockReader(List.of("admin", "admin", "1", "2"));
         Config.OUTPUT_PRINTER = mockPrinter;
         Client.run();
         List<String> outputs = mockPrinter.getOutputs();
@@ -65,7 +65,7 @@ public class Clients {
     @Test
     public void testAddClientScenario() {
         MockPrinter mockPrinter = new MockPrinter();
-        Config.EXIT_AFTER_WINDOW_CHANGES = 3;
+        Config.EXIT_AFTER_WINDOW_CHANGES = 5;
         Config.INPUT_READER = new MockReader(
                 List.of("admin", "admin", "1", "1", "Peter", "Peterson", "p.peterson@gmail.com", "Company2", "0", "0")
         );
@@ -80,28 +80,29 @@ public class Clients {
         String addFirstNameText = outputs.get(28);
         String addLastNameText = outputs.get(29);
         String addOrganizationText = outputs.get(30);
-        String clientsTitle2 = outputs.get(31);
-        String clientAddedMessage = outputs.get(32);
-        String numberOfClientsText = outputs.get(33);
-        String clientsTableNameText = outputs.get(34);
-        String clientTableCell00 = outputs.get(35);
-        String clientTableCell01 = outputs.get(36);
-        String clientTableCell02 = outputs.get(37);
-        String clientTableCell03 = outputs.get(38);
-        String clientTableCell04 = outputs.get(39);
-        String clientTableCell05 = outputs.get(40);
-        String clientTableCell10 = outputs.get(41);
-        String clientTableCell11 = outputs.get(42);
-        String clientTableCell12 = outputs.get(43);
-        String clientTableCell13 = outputs.get(44);
-        String clientTableCell14 = outputs.get(45);
-        String clientTableCell15 = outputs.get(46);
-        String clientTableCell20 = outputs.get(47);
-        String clientTableCell21 = outputs.get(48);
-        String clientTableCell22 = outputs.get(49);
-        String clientTableCell23 = outputs.get(50);
-        String clientTableCell24 = outputs.get(51);
-        String clientTableCell25 = outputs.get(52);
+        String addEmailText = outputs.get(31);
+        String clientsTitle2 = outputs.get(32);
+        String clientAddedMessage = outputs.get(33);
+        String numberOfClientsText = outputs.get(34);
+        String clientsTableNameText = outputs.get(35);
+        String clientTableCell00 = outputs.get(36);
+        String clientTableCell01 = outputs.get(37);
+        String clientTableCell02 = outputs.get(38);
+        String clientTableCell03 = outputs.get(39);
+        String clientTableCell04 = outputs.get(40);
+        String clientTableCell05 = outputs.get(41);
+        String clientTableCell10 = outputs.get(42);
+        String clientTableCell11 = outputs.get(43);
+        String clientTableCell12 = outputs.get(44);
+        String clientTableCell13 = outputs.get(45);
+        String clientTableCell14 = outputs.get(46);
+        String clientTableCell15 = outputs.get(47);
+        String clientTableCell20 = outputs.get(48);
+        String clientTableCell21 = outputs.get(49);
+        String clientTableCell22 = outputs.get(50);
+        String clientTableCell23 = outputs.get(51);
+        String clientTableCell24 = outputs.get(52);
+        String clientTableCell25 = outputs.get(53);
 
         Assertions.assertAll(
                 () -> assertEquals("Clients", clientsTitle),
@@ -112,6 +113,7 @@ public class Clients {
                 () -> assertEquals("Write clients' first name:", addFirstNameText),
                 () -> assertEquals("Write clients' last name:", addLastNameText),
                 () -> assertEquals("Write clients' organization:", addOrganizationText),
+                () -> assertEquals("Write clients' email:", addEmailText),
                 () -> assertEquals("Clients information", clientsTableNameText),
                 () -> assertEquals("Clients", clientsTitle2),
                 () -> assertEquals("Success: Client was added", clientAddedMessage),

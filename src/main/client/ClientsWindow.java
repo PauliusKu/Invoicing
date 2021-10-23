@@ -49,7 +49,21 @@ public class ClientsWindow implements IWindow {
         outputPrinter.printText(numberOfClientsText);
         outputPrinter.printText(Strings.CLIENTS_INFORMATION);
         outputPrinter.printTable(createTable(table));
-        return null;
+        outputPrinter.printText(Strings.CHOOSE_FROM_THE_FOLLOWING_OPTIONS);
+        outputPrinter.printText(Strings.ADD_CLIENT_1);
+        outputPrinter.printText(Strings.GO_BACK_2);
+        String option = inputReader.readString();
+        Config.WINDOW_CHANGES++;
+        if (option.equals(Strings.ONE)){
+            return Windows.GetWindow(Strings.ADD_CLIENT).show();
+        }
+        else if (option.equals(Strings.TWO)){
+            return Windows.GetWindow(Strings.MAIN_MENU).show();
+        }
+        else {
+            MESSAGE = Strings.UNKNOWN_OPTION_WAS_CHOSEN;
+            return show();
+        }
     }
 
     private IWindow onError(Map<String, Object> response) {
@@ -59,7 +73,9 @@ public class ClientsWindow implements IWindow {
             window.setMessage(message);
             return window.show();
         }
-        return null;
+        else{
+            return null;
+        }
     }
 
     @Override
@@ -74,7 +90,6 @@ public class ClientsWindow implements IWindow {
         if (checkExit()){
             return null;
         }
-        //get clients from backend
         Map<String, Object> response = ClientsController.getClients(Config.TOKEN);
         Config.WINDOW_CHANGES++;
         if (response.containsKey(Strings.TABLE)) {
