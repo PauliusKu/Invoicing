@@ -1,16 +1,24 @@
 package main.controller.access;
 import main.controller.common.Controller;
+import main.controller.common.ResponseKey;
 import main.controller.interfaces.IUsersRepo;
 import main.controller.util.EmailValidator;
 import main.controller.util.LoginValidator;
 import main.domain.user.UserDetails;
 import main.domain.user.UserLogin;
 
+import java.util.Map;
+
 public class LoginController extends Controller {
 
     private static final IUsersRepo usersRepo = repositoryFactory.getUsers();
 
-    public static String login(String email, String password) {
+    public static Map<String, String> login(String email, String password) {
+        doLogin(email, password);
+        return getMapResponse();
+    }
+
+    public static void doLogin(String email, String password){
         UserLogin userLogin = new UserLogin();
         userLogin.email.email = email;
         userLogin.password.password = password;
@@ -22,9 +30,9 @@ public class LoginController extends Controller {
 
         var errors = validator.getErrorMessages();
 
-        if(errors.isEmpty())
-            return "Success: you are logged in";
+        if(!errors.isEmpty())
+            response.put(ResponseKey.ERROR.toString(), "Error occurred: " + errors);
 
-        return errors.toString();
+        response.put(ResponseKey.MESSAGE.toString(), "Success: you are logged in");
     }
 }
