@@ -33,6 +33,10 @@ public class ClientsController extends Controller {
             return;
         }
 
+        if (!isClientRecordValid(clientRecord)){
+            return;
+        }
+
         Client client = new Client();
         client.firstName = clientRecord.get(0);
         client.lastName = clientRecord.get(1);
@@ -73,5 +77,29 @@ public class ClientsController extends Controller {
         }
 
         response.put(ResponseKey.TABLE.toString(), table);
+    }
+
+    private static boolean isClientRecordValid(List<String> clientRecord){
+        if (clientRecord.get(0).isBlank()){
+            response.put(ResponseKey.ERROR.toString(), "Error occurred: [Empty first name]");
+            return false;
+        }
+
+        if (clientRecord.get(1).isBlank()){
+            response.put(ResponseKey.ERROR.toString(), "Error occurred: [Empty last name]");
+            return false;
+        }
+
+        if (clientRecord.get(2).isBlank()){
+            response.put(ResponseKey.ERROR.toString(), "Error occurred: [Empty email]");
+            return false;
+        }
+
+        if (clientRecord.get(3).isBlank()){
+            response.put(ResponseKey.ERROR.toString(), "Error occurred: [Empty organisation]");
+            return false;
+        }
+
+        return true;
     }
 }
