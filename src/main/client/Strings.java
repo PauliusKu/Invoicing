@@ -17,5 +17,12 @@ public class Strings {
     public static final String TOKEN = "TOKEN";
     public static final String MESSAGE_KEY = "MESSAGE";
     public static final String ERROR_KEY = "ERROR";
-//    public static final String ;
+    public static final String CHOOSE_FROM_THE_FOLLOWING_OPTIONS = "Choose from the following options: ";
+    public static final String VIEW_CLIENTS_1 = "1) View Clients";
+    public static final String LOGOUT_2 = "2) Logout";
+    public static final String UNKNOWN_OPTION_WAS_CHOSEN = "Unknown option was chosen.";
+    public static final String CLIENTS = "Clients";
+    //    public static final String ;
+    //    public static final String ;
+    //    public static final String ;
 }

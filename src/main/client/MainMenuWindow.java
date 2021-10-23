@@ -1,10 +1,24 @@
 package main.client;
 
+import main.client.interfaces.IInputReader;
 import main.client.interfaces.IOutputPrinter;
 import main.client.interfaces.IWindow;
 
-public record MainMenuWindow(IOutputPrinter outputPrinter) implements IWindow {
+public class MainMenuWindow implements IWindow {
+    private final IInputReader inputReader;
+    private final IOutputPrinter outputPrinter;
+
     private static String MESSAGE;
+
+
+    public MainMenuWindow(IInputReader inputReader, IOutputPrinter outputPrinter) {
+        this.inputReader = inputReader;
+        this.outputPrinter = outputPrinter;
+    }
+
+    private boolean checkExit() {
+        return Config.TEST_MODE && (Config.WINDOW_CHANGES >= Config.EXIT_AFTER_WINDOW_CHANGES);
+    }
 
     private void printMessage() {
         outputPrinter.printMessage(MESSAGE);
@@ -21,6 +35,24 @@ public record MainMenuWindow(IOutputPrinter outputPrinter) implements IWindow {
     public IWindow show() {
         outputPrinter.printTitle(Strings.MAIN_MENU);
         printMessage();
-        return null;
+        if (checkExit()){
+            return null;
+        }
+        outputPrinter.printText(Strings.CHOOSE_FROM_THE_FOLLOWING_OPTIONS);
+        outputPrinter.printText(Strings.VIEW_CLIENTS_1);
+        outputPrinter.printText(Strings.LOGOUT_2);
+        String option = inputReader.readString();
+        Config.WINDOW_CHANGES++;
+        if (option.equals("1")) {
+            return Windows.GetWindow(Strings.CLIENTS).show();
+        }
+        else if (option.equals("2")){
+            Config.TOKEN = null;
+            return Windows.GetWindow(Strings.SIGN_IN).show();
+        }
+        else {
+            MESSAGE = Strings.UNKNOWN_OPTION_WAS_CHOSEN;
+            return show();
+        }
     }
 }

@@ -13,6 +13,7 @@ public class Clients {
     @Test
     public void testViewClientsScenario() {
         MockPrinter mockPrinter = new MockPrinter();
+        Config.EXIT_AFTER_WINDOW_CHANGES = 3;
         Config.INPUT_READER = new MockReader(List.of("admin", "admin", "1"));
         Config.OUTPUT_PRINTER = mockPrinter;
         Client.run();
