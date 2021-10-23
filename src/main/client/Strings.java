@@ -29,8 +29,8 @@ public class Strings {
     public static final String LAST_NAME = "Last name";
     public static final String EMAIL = "Email";
     public static final String ORGANIZATION = "Organization";
-    public static final String INVOICED_AMOUNT = "Invoiced amount";
-    public static final String RECEIVED_AMOUNT = "Received amount";
+    public static final String INVOICED_AMOUNT = "Invoiced amount (EUR)";
+    public static final String RECEIVED_AMOUNT = "Received amount (EUR)";
     //    public static final String ;
     //    public static final String ;
     //    public static final String ;

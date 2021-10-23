@@ -69,7 +69,7 @@ public class ClientsWindow implements IWindow {
 
     @Override
     public IWindow show() {
-        outputPrinter.printTitle(Strings.MAIN_MENU);
+        outputPrinter.printTitle(Strings.CLIENTS);
         printMessage();
         if (checkExit()){
             return null;

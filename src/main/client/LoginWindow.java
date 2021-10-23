@@ -32,11 +32,11 @@ public class LoginWindow implements IWindow {
         return Config.TEST_MODE && (Config.WINDOW_CHANGES >= Config.EXIT_AFTER_WINDOW_CHANGES);
     }
 
-    private IWindow onSuccess(Map<String, String> response) {
-        Config.TOKEN = response.get(Strings.TOKEN);
+    private IWindow onSuccess(Map<String, Object> response) {
+        Config.TOKEN = (String) response.get(Strings.TOKEN);
         IWindow window = Windows.GetWindow(Strings.MAIN_MENU);
         if (window != null) {
-            String message = response.get(Strings.MESSAGE_KEY);
+            String message = (String) response.get(Strings.MESSAGE_KEY);
             window.setMessage(message);
             return window.show();
         }
@@ -45,8 +45,8 @@ public class LoginWindow implements IWindow {
         }
     }
 
-    private IWindow onError(Map<String, String> response) {
-        String message = response.get(Strings.ERROR_KEY);
+    private IWindow onError(Map<String, Object> response) {
+        String message = (String)response.get(Strings.ERROR_KEY);
         this.setMessage(message);
         return show();
     }
@@ -67,7 +67,7 @@ public class LoginWindow implements IWindow {
         String email = inputReader.readString();
         outputPrinter.printText(Strings.WRITE_YOUR_PASSWORD);
         String password = inputReader.readString();
-        Map<String, String> response = LoginController.login(email, password);
+        Map<String, Object> response = LoginController.login(email, password);
         Config.WINDOW_CHANGES++;
         if (response.containsKey(Strings.TOKEN)) {
             return onSuccess(response);

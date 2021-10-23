@@ -50,13 +50,13 @@ public class Clients {
                 () -> assertEquals("Last name", clientTableCell01),
                 () -> assertEquals("Email", clientTableCell02),
                 () -> assertEquals("Organization", clientTableCell03),
-                () -> assertEquals("Invoiced amount", clientTableCell04),
-                () -> assertEquals("Received amount", clientTableCell05),
+                () -> assertEquals("Invoiced amount (EUR)", clientTableCell04),
+                () -> assertEquals("Received amount (EUR)", clientTableCell05),
                 () -> assertEquals("John", clientTableCell10),
                 () -> assertEquals("Johnson", clientTableCell11),
                 () -> assertEquals("j.johnson@gmail.com", clientTableCell12),
                 () -> assertEquals("Company", clientTableCell13),
-                () -> assertEquals("5500 Eur", clientTableCell14),
+                () -> assertEquals("5500", clientTableCell14),
                 () -> assertEquals("4750", clientTableCell15)
 
         );
