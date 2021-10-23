@@ -10,4 +10,9 @@ public class Users implements IUsers {
     public UserDetails getUserByEmail(Email email) {
         throw new java.lang.UnsupportedOperationException();
     }
+
+    @Override
+    public void clear() {
+
+    }
 }

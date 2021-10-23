@@ -12,4 +12,9 @@ public class Users implements IUsers {
         userDetails.password.password = "admin";
         return userDetails;
     }
+
+    @Override
+    public void clear() {
+
+    }
 }

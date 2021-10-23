@@ -14,4 +14,9 @@ public class Clients implements IClients {
     public boolean addOneClient(Client client){
         throw new java.lang.UnsupportedOperationException();
     }
+
+    @Override
+    public void clear() {
+
+    }
 }

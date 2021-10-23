@@ -30,4 +30,9 @@ public class Clients implements IClients {
     public boolean addOneClient(Client client){
         return  clients.add(client);
     }
+
+    @Override
+    public void clear() {
+        clients = new ArrayList<>();
+    }
 }
