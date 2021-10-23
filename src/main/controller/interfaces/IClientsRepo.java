@@ -8,4 +8,5 @@ public interface IClientsRepo {
 
     ArrayList<Client> getAllClients();
     boolean addOneClient(Client client);
+    boolean deleteOneClient(String email);
 }

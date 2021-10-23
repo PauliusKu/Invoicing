@@ -17,6 +17,11 @@ public class Clients implements IClients {
     }
 
     @Override
+    public boolean deleteOneClient(String email) {
+        return false;
+    }
+
+    @Override
     public void clear() {
 
     }

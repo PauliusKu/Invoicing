@@ -8,6 +8,7 @@ import main.domain.client.Client;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class ClientsController extends Controller {
 
@@ -24,6 +25,13 @@ public class ClientsController extends Controller {
         init();
         if (authorise(token))
             collectClients();
+        return getMapResponse();
+    }
+
+    public static Map<String, Object> deleteClient(String token, String clientEmail) {
+        init();
+        if (authorise(token))
+            deleteClient(clientEmail);
         return getMapResponse();
     }
 
@@ -77,6 +85,20 @@ public class ClientsController extends Controller {
         }
 
         response.put(ResponseKey.TABLE.toString(), table);
+    }
+
+    public static void deleteClient(String clientEmail) {
+        var clientsList = clientsRepo.getAllClients();
+
+        for(var clientToCheck : clientsList){
+            if (Objects.equals(clientEmail, clientToCheck.email.email)){
+                clientsRepo.deleteOneClient(clientEmail);
+                response.put(ResponseKey.MESSAGE.toString(), "Success: Client was deleted");
+                break;
+            }
+        }
+
+        response.put(ResponseKey.ERROR.toString(), "This client is not present");
     }
 
     private static boolean isClientRecordValid(List<String> clientRecord){

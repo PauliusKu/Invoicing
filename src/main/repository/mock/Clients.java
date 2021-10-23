@@ -6,6 +6,7 @@ import main.repository.common.IClients;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Clients implements IClients {
 
@@ -17,6 +18,19 @@ public class Clients implements IClients {
 
     public boolean addOneClient(Client client){
         return  clients.add(client);
+    }
+
+    @Override
+    public boolean deleteOneClient(String email) {
+        int i = 0;
+        for (var client : clients){
+            if (Objects.equals(client.email.email, email)){
+                clients.remove(i);
+            }
+            i++;
+        }
+
+        return true;
     }
 
     @Override
