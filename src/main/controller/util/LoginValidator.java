@@ -23,6 +23,16 @@ public class LoginValidator extends ParallelValidator{
             return;
         }
 
+        if (userLogin.password == null){
+            errorMessages.add("Password field is empty");
+            return;
+        }
+
+        if (userLogin.password.password == null){
+            errorMessages.add("Password field is empty");
+            return;
+        }
+
         validatePasswordLength(userLogin.password);
         validatePasswordAgainstGivenUser(userLogin);
     }

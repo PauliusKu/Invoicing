@@ -33,8 +33,10 @@ public class LoginController extends Controller {
 
         response = new HashMap<>();
 
-        if(!errors.isEmpty())
+        if(!errors.isEmpty()){
             response.put(ResponseKey.ERROR.toString(), "Error occurred: " + errors);
+            return;
+        }
 
         response.put(ResponseKey.MESSAGE.toString(), "Success: you are logged in");
     }
