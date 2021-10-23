@@ -75,7 +75,7 @@ public class Clients {
 
     }
     @Test
-    public void testAddClientScenario() {
+    public void testAddClientSuccessScenario() {
         prepareDatabase();
 
         MockPrinter mockPrinter = new MockPrinter();
@@ -153,4 +153,44 @@ public class Clients {
                 () -> assertEquals("0", clientTableCell25)
         );
     }
+
+    @Test
+    public void testAddClientAlternativeScenario() {
+        prepareDatabase();
+
+        MockPrinter mockPrinter = new MockPrinter();
+        Config.EXIT_AFTER_WINDOW_CHANGES = 6;
+        Config.INPUT_READER = new MockReader(
+                List.of("admin", "admin", "1", "1", "Peter", "", "p.peterson@gmail.com", "Company2", "0", "0")
+        );
+        Config.OUTPUT_PRINTER = mockPrinter;
+        Client.run();
+        List<String> outputs = mockPrinter.getOutputs();
+        String clientsTitle = outputs.get(9);
+        String chooseOptionText = outputs.get(24);
+        String addClientOptionText = outputs.get(25);
+        String goBackOptionText = outputs.get(26);
+        String newClientTitle = outputs.get(27);
+        String addFirstNameText = outputs.get(28);
+        String addLastNameText = outputs.get(29);
+        String addOrganizationText = outputs.get(30);
+        String addEmailText = outputs.get(31);
+        String newClientTitle2 = outputs.get(32);
+        String errorMessage = outputs.get(33);
+
+        Assertions.assertAll(
+                () -> assertEquals("Clients", clientsTitle),
+                () -> assertEquals("Choose from the following options: ", chooseOptionText),
+                () -> assertEquals("1) Add client", addClientOptionText),
+                () -> assertEquals("2) Go back", goBackOptionText),
+                () -> assertEquals("New client", newClientTitle),
+                () -> assertEquals("Write clients' first name:", addFirstNameText),
+                () -> assertEquals("Write clients' last name:", addLastNameText),
+                () -> assertEquals("Write clients' organization:", addOrganizationText),
+                () -> assertEquals("Write clients' email:", addEmailText),
+                () -> assertEquals("New client", newClientTitle2),
+                () -> assertEquals("Error occurred: [Empty last name]", errorMessage)
+        );
+    }
+
 }

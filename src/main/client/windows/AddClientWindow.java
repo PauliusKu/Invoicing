@@ -31,7 +31,7 @@ public class AddClientWindow extends Window {
 
     private IWindow onError(Map<String, Object> response) {
         String message = (String) response.get(Strings.ERROR_KEY);
-        IWindow window = Windows.GetWindow(Strings.CLIENTS);
+        IWindow window = Windows.GetWindow(Strings.NEW_CLIENT);
         if (window != null) {
             window.setMessage(message);
             return window.show();
