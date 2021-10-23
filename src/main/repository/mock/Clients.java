@@ -19,6 +19,7 @@ public class Clients implements IClients {
             client.organisation = "Company";
             client.invoicedAmount = new BigDecimal(5500);
             client.receivedAmount = new BigDecimal(4750);
+            clients.add(client);
         }
     }
 
