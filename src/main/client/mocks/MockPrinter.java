@@ -29,6 +29,17 @@ public class MockPrinter implements IOutputPrinter {
         }
     }
 
+    @Override
+    public void printTable(List<List<String>> table) {
+        for (var row:table) {
+            for (String cell:row) {
+                if (!cell.equals(Strings.EMPTY_STRING)){
+                    outputs.add(cell);
+                }
+            }
+        }
+    }
+
     public List<String> getOutputs() {
         return outputs;
     }

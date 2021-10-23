@@ -22,6 +22,15 @@ public class Strings {
     public static final String LOGOUT_2 = "2) Logout";
     public static final String UNKNOWN_OPTION_WAS_CHOSEN = "Unknown option was chosen.";
     public static final String CLIENTS = "Clients";
+    public static final String TABLE = "TABLE";
+    public static final String NUMBER_OF_CLIENTS_THAT_YOU_HAVE ="Number of clients that you have: ";
+    public static final String CLIENTS_INFORMATION = "Clients information";
+    public static final String FIRST_NAME = "First name";
+    public static final String LAST_NAME = "Last name";
+    public static final String EMAIL = "Email";
+    public static final String ORGANIZATION = "Organization";
+    public static final String INVOICED_AMOUNT = "Invoiced amount";
+    public static final String RECEIVED_AMOUNT = "Received amount";
     //    public static final String ;
     //    public static final String ;
     //    public static final String ;
