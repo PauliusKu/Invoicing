@@ -1,5 +1,7 @@
 package main.client;
 
+import main.client.config.Client;
+import main.client.config.Config;
 import main.client.implementations.ConsolePrinter;
 import main.client.implementations.ConsoleReader;
 

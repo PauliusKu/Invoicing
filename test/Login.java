@@ -1,7 +1,9 @@
-import main.client.Client;
-import main.client.Config;
+import main.client.config.Client;
+import main.client.config.Config;
 import main.client.mocks.MockPrinter;
 import main.client.mocks.MockReader;
+import main.repository.common.IPrepareDB;
+import main.repository.mock.Users;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.List;
@@ -9,8 +11,15 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Login {
+    private void prepareDatabase(){
+        IPrepareDB prepareDB = new Users();
+        prepareDB.clear();
+        prepareDB.prepare(List.of("admin", "admin"));
+    }
+
     @Test
     public void testLoginSuccessScenario() {
+        prepareDatabase();
         //when
         MockPrinter mockPrinter = new MockPrinter();
         Config.INPUT_READER = new MockReader(List.of("admin", "admin"));
@@ -37,6 +46,7 @@ class Login {
 
     @Test
     public void testLoginErrorScenario() {
+        prepareDatabase();
         MockPrinter mockPrinter = new MockPrinter();
         Config.INPUT_READER = new MockReader(List.of("admin", "not_admin"));
         Config.OUTPUT_PRINTER = mockPrinter;

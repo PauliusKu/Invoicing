@@ -1,6 +1,6 @@
 package main.client.mocks;
 
-import main.client.Strings;
+import main.client.config.Strings;
 import main.client.interfaces.IOutputPrinter;
 
 import java.util.ArrayList;

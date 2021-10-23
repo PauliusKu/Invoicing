@@ -1,4 +1,4 @@
-package main.client;
+package main.client.config;
 
 public class Client {
     public static void run(){

@@ -1,34 +1,16 @@
-package main.client;
+package main.client.windows;
 
+import main.client.config.Config;
+import main.client.config.Strings;
+import main.client.config.Windows;
 import main.client.interfaces.IInputReader;
 import main.client.interfaces.IOutputPrinter;
 import main.client.interfaces.IWindow;
 
-public class MainMenuWindow implements IWindow {
-    private final IInputReader inputReader;
-    private final IOutputPrinter outputPrinter;
-
-    private static String MESSAGE;
-
+public class MainMenuWindow extends Window {
 
     public MainMenuWindow(IInputReader inputReader, IOutputPrinter outputPrinter) {
-        this.inputReader = inputReader;
-        this.outputPrinter = outputPrinter;
-    }
-
-    private boolean checkExit() {
-        return Config.TEST_MODE && (Config.WINDOW_CHANGES >= Config.EXIT_AFTER_WINDOW_CHANGES);
-    }
-
-    private void printMessage() {
-        outputPrinter.printMessage(MESSAGE);
-        MESSAGE = Strings.EMPTY_STRING;
-    }
-
-
-    @Override
-    public void setMessage(String message) {
-        MESSAGE = message;
+        super(inputReader, outputPrinter);
     }
 
     @Override

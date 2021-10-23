@@ -1,5 +1,8 @@
-package main.client;
+package main.client.windows;
 
+import main.client.config.Config;
+import main.client.config.Strings;
+import main.client.config.Windows;
 import main.client.interfaces.IInputReader;
 import main.client.interfaces.IOutputPrinter;
 import main.client.interfaces.IWindow;
@@ -7,29 +10,11 @@ import main.controller.access.LoginController;
 
 import java.util.Map;
 
-import static main.client.Strings.MESSAGE_KEY;
-
-public class LoginWindow implements IWindow {
-    //IMMUTABLE FIELDS
-    private final IInputReader inputReader;
-    private final IOutputPrinter outputPrinter;
-
-    //MUTABLE FIELDS
-
-    private String MESSAGE = Strings.WELCOME_TO_INVOICING;
+public class LoginWindow extends Window {
 
     public LoginWindow(IInputReader inputReader, IOutputPrinter outputPrinter) {
-        this.inputReader = inputReader;
-        this.outputPrinter = outputPrinter;
-    }
-
-    private void printMessage() {
-        outputPrinter.printMessage(MESSAGE);
-        MESSAGE = Strings.EMPTY_STRING;
-    }
-
-    private boolean checkExit() {
-        return Config.TEST_MODE && (Config.WINDOW_CHANGES >= Config.EXIT_AFTER_WINDOW_CHANGES);
+        super(inputReader, outputPrinter);
+        MESSAGE = Strings.WELCOME_TO_INVOICING;
     }
 
     private IWindow onSuccess(Map<String, Object> response) {
@@ -49,11 +34,6 @@ public class LoginWindow implements IWindow {
         String message = (String)response.get(Strings.ERROR_KEY);
         this.setMessage(message);
         return show();
-    }
-
-    @Override
-    public void setMessage(String message) {
-        MESSAGE = message;
     }
 
     @Override

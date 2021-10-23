@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Users implements IUsers {
 
-    public UserDetails userDetails;
+    public static UserDetails userDetails;
 
     public UserDetails getUserByEmail(Email email) {
         return userDetails;
@@ -21,7 +21,7 @@ public class Users implements IUsers {
 
     @Override
     public void prepare(List<String> dataList) {
-        UserDetails userDetails = new UserDetails();
+        userDetails = new UserDetails();
         userDetails.email.email = dataList.get(0);
         userDetails.password.password = dataList.get(1);
     }

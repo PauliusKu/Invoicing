@@ -1,6 +1,12 @@
-package main.client;
+package main.client.config;
 
+import main.client.config.Config;
+import main.client.config.Strings;
 import main.client.interfaces.IWindow;
+import main.client.windows.AddClientWindow;
+import main.client.windows.ClientsWindow;
+import main.client.windows.LoginWindow;
+import main.client.windows.MainMenuWindow;
 
 import java.util.HashMap;
 import java.util.Map;

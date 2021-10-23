@@ -1,4 +1,4 @@
-package main.client;
+package main.client.config;
 
 import main.client.interfaces.IInputReader;
 import main.client.interfaces.IOutputPrinter;
