@@ -94,7 +94,7 @@ public class ClientsController extends Controller {
             if (Objects.equals(clientEmail, clientToCheck.email.email)){
                 clientsRepo.deleteOneClient(clientEmail);
                 response.put(ResponseKey.MESSAGE.toString(), "Success: Client was deleted");
-                break;
+                return;
             }
         }
 
