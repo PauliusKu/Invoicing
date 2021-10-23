@@ -55,7 +55,7 @@ class Login {
                 () -> assertEquals("Write your email:", inputEmailText),
                 () -> assertEquals("Write your password:", inputPasswordText),
                 () -> assertEquals("Sign in", mainMenuTitle),
-                () -> assertEquals("Error: [Wrong email or password]", mainMenuMessage)
+                () -> assertEquals("Error occurred: [Wrong email or password]", mainMenuMessage)
         );
     }
 

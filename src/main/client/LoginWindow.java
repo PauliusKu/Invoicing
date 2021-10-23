@@ -31,6 +31,12 @@ public class LoginWindow implements IWindow {
         MESSAGE = Strings.EMPTY_STRING;
     }
 
+    private boolean checkExit() {
+        boolean checkExit = (TEST_MODE && EXIT_AFTER == 0);
+        EXIT_AFTER--;
+        return checkExit;
+    }
+
     private IWindow onSuccess(Map<String, String> response) {
         IWindow window = Windows.GetWindow(Strings.MAIN_MENU);
         if (window != null) {
@@ -44,15 +50,9 @@ public class LoginWindow implements IWindow {
     }
 
     private IWindow onError(Map<String, String> response) {
-        EXIT_AFTER--;
-        if (TEST_MODE && EXIT_AFTER == 0) {
-            return null;
-        }
-        else {
-            String message = Strings.ERROR + response.get(Strings.ERROR_KEY);
-            this.setMessage(message);
-            return show();
-        }
+        String message = response.get(Strings.ERROR_KEY);
+        this.setMessage(message);
+        return show();
     }
 
     @Override
@@ -64,6 +64,9 @@ public class LoginWindow implements IWindow {
     public IWindow show(){
         outputPrinter.printTitle(Strings.SIGN_IN);
         printMessage();
+        if (checkExit()) {
+            return null;
+        }
         outputPrinter.printText(Strings.WRITE_YOUR_EMAIL);
         String email = inputReader.readString();
         outputPrinter.printText(Strings.WRITE_YOUR_PASSWORD);
