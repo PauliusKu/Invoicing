@@ -55,7 +55,7 @@ public class ClientsWindow implements IWindow {
         String option = inputReader.readString();
         Config.WINDOW_CHANGES++;
         if (option.equals(Strings.ONE)){
-            return Windows.GetWindow(Strings.ADD_CLIENT).show();
+            return Windows.GetWindow(Strings.NEW_CLIENT).show();
         }
         else if (option.equals(Strings.TWO)){
             return Windows.GetWindow(Strings.MAIN_MENU).show();
@@ -91,6 +91,7 @@ public class ClientsWindow implements IWindow {
             return null;
         }
         Map<String, Object> response = ClientsController.getClients(Config.TOKEN);
+        Config.TOKEN = (String) response.get(Strings.TOKEN);
         Config.WINDOW_CHANGES++;
         if (response.containsKey(Strings.TABLE)) {
             return onSuccess(response);

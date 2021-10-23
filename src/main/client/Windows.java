@@ -17,7 +17,7 @@ public class Windows {
         windows.put(Strings.SIGN_IN, new LoginWindow(Config.INPUT_READER, Config.OUTPUT_PRINTER));
         windows.put(Strings.MAIN_MENU, new MainMenuWindow(Config.INPUT_READER, Config.OUTPUT_PRINTER));
         windows.put(Strings.CLIENTS, new ClientsWindow(Config.INPUT_READER, Config.OUTPUT_PRINTER));
-        windows.put(Strings.ADD_CLIENT, new AddClientWindow(Config.INPUT_READER, Config.OUTPUT_PRINTER));
+        windows.put(Strings.NEW_CLIENT, new AddClientWindow(Config.INPUT_READER, Config.OUTPUT_PRINTER));
     }
 
     public static IWindow GetWindow(String title) {

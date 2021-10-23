@@ -35,7 +35,7 @@ public class Strings {
     public static final String GO_BACK_2 = "2) Go back";
     public static final String ONE = "1";
     public static final String TWO = "2";
-    public static final String ADD_CLIENT = "Add client";
+    public static final String NEW_CLIENT = "New client";
     public static final String WRITE_CLIENTS_FIRST_NAME = "Write clients' first name:";
     public static final String WRITE_CLIENTS_LAST_NAME = "Write clients' last name:";
     public static final String WRITE_CLIENTS_ORGANIZATION = "Write clients' organization:";

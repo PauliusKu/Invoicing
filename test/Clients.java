@@ -65,7 +65,7 @@ public class Clients {
     @Test
     public void testAddClientScenario() {
         MockPrinter mockPrinter = new MockPrinter();
-        Config.EXIT_AFTER_WINDOW_CHANGES = 5;
+        Config.EXIT_AFTER_WINDOW_CHANGES = 6;
         Config.INPUT_READER = new MockReader(
                 List.of("admin", "admin", "1", "1", "Peter", "Peterson", "p.peterson@gmail.com", "Company2", "0", "0")
         );
