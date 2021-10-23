@@ -2,12 +2,17 @@ package main.controller.common;
 
 import main.controller.util.TokenManager;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Controller {
     public static RepositoryFactory repositoryFactory = new RepositoryFactory();
     public static Map<String, Object> response;
     public static String token;
+
+    protected static void init(){
+        response = new HashMap<>();
+    }
 
     protected static boolean authorise(String token){
 

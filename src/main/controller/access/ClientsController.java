@@ -14,12 +14,14 @@ public class ClientsController extends Controller {
     private static final IClientsRepo clientsRepo = repositoryFactory.getClients();
 
     public static Map<String, Object> addClient(String token, List<String> clientRecord){
+        init();
         if (authorise(token))
             addClient(clientRecord);
         return getMapResponse();
     }
 
     public static Map<String, Object> getClients(String token) {
+        init();
         if (authorise(token))
             collectClients();
         return getMapResponse();

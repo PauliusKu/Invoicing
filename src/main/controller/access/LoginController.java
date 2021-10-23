@@ -15,6 +15,7 @@ public class LoginController extends Controller {
     private static final IUsersRepo usersRepo = repositoryFactory.getUsers();
 
     public static Map<String, Object> login(String email, String password) {
+        init();
         doLogin(email, password);
         return getMapResponse();
     }
@@ -30,8 +31,6 @@ public class LoginController extends Controller {
         validator.validate(userLogin);
 
         var errors = validator.getErrorMessages();
-
-        response = new HashMap<>();
 
         if(!errors.isEmpty()){
             response.put(ResponseKey.ERROR.toString(), "Error occurred: " + errors);
