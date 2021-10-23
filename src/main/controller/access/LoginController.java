@@ -14,7 +14,7 @@ public class LoginController extends Controller {
 
     private static final IUsersRepo usersRepo = repositoryFactory.getUsers();
 
-    public static Map<String, String> login(String email, String password) {
+    public static Map<String, Object> login(String email, String password) {
         doLogin(email, password);
         return getMapResponse();
     }

@@ -1,8 +1,11 @@
 package main.controller.util;
 
+import java.util.Objects;
+
 public class TokenManager {
 
     private static TokenManager instance;
+    private static String currentToken;
 
     private TokenManager(){
         instance = this;
@@ -15,10 +18,11 @@ public class TokenManager {
     }
 
     public String getNewToken(String prevToken){
-       return "123" + prevToken;
+        currentToken = "123" + prevToken;
+        return currentToken;
     }
 
     public boolean checkToken(String token){
-        return true;
+        return Objects.equals(token, currentToken);
     }
 }

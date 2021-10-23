@@ -6,19 +6,21 @@ import java.util.Map;
 
 public class Controller {
     public static RepositoryFactory repositoryFactory = new RepositoryFactory();
-    public static Map<String, String> response;
+    public static Map<String, Object> response;
     public static String token;
 
     protected static boolean authorise(String token){
 
-        if (!TokenManager.getInstance().checkToken(token))
+        if (!TokenManager.getInstance().checkToken(token)) {
+            response.put(ResponseKey.ERROR.toString(), "Unauthorized token!");
             return false;
+        }
 
         Controller.token = token;
         return true;
     }
 
-    protected static Map<String, String> getMapResponse(){
+    protected static Map<String, Object> getMapResponse(){
 
         if (response.isEmpty()) {
             response.put(ResponseKey.ERROR.toString(), "Other error occurred!");
