@@ -43,10 +43,10 @@ public class MainMenuWindow implements IWindow {
         outputPrinter.printText(Strings.LOGOUT_2);
         String option = inputReader.readString();
         Config.WINDOW_CHANGES++;
-        if (option.equals("1")) {
+        if (option.equals(Strings.ONE)) {
             return Windows.GetWindow(Strings.CLIENTS).show();
         }
-        else if (option.equals("2")){
+        else if (option.equals(Strings.TWO)){
             Config.TOKEN = null;
             return Windows.GetWindow(Strings.SIGN_IN).show();
         }
