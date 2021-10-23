@@ -15,6 +15,7 @@ public class Client implements IEntity {
     public BigDecimal receivedAmount;
 
     public Client() {
+        email = new Email();
         invoicedAmount = new BigDecimal(0);
         receivedAmount = new BigDecimal(0);
     }
