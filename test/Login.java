@@ -38,7 +38,7 @@ class Login {
     @Test
     public void testLoginErrorScenario() {
         MockPrinter mockPrinter = new MockPrinter();
-        Config.INPUT_READER = new MockReader(List.of("admin", "admin"));
+        Config.INPUT_READER = new MockReader(List.of("admin", "not_admin"));
         Config.OUTPUT_PRINTER = mockPrinter;
         Client.run();
         List<String> outputs = mockPrinter.getOutputs();

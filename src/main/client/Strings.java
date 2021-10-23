@@ -14,7 +14,8 @@ public class Strings {
     public static final String TITLE = "Title: ";
     public static final String MESSAGE = "Message: ";
     public static final String ERROR = "Error: ";
-//    public static final String ;
-//    public static final String ;
+    public static final String TOKEN = "TOKEN";
+    public static final String MESSAGE_KEY = "MESSAGE";
+    public static final String ERROR_KEY = "ERROR";
 //    public static final String ;
 }

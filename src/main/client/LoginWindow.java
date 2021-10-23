@@ -5,6 +5,10 @@ import main.client.interfaces.IOutputPrinter;
 import main.client.interfaces.IWindow;
 import main.controller.access.LoginController;
 
+import java.util.Map;
+
+import static main.client.Strings.MESSAGE_KEY;
+
 public class LoginWindow implements IWindow {
     //IMMUTABLE FIELDS
     private final boolean TEST_MODE = Config.TEST_MODE;
@@ -27,10 +31,11 @@ public class LoginWindow implements IWindow {
         MESSAGE = Strings.EMPTY_STRING;
     }
 
-    private IWindow onSuccess(String response) {
+    private IWindow onSuccess(Map<String, String> response) {
         IWindow window = Windows.GetWindow(Strings.MAIN_MENU);
         if (window != null) {
-            window.setMessage(response);
+            String message = response.get(Strings.MESSAGE_KEY);
+            window.setMessage(message);
             return window.show();
         }
         else{
@@ -38,13 +43,13 @@ public class LoginWindow implements IWindow {
         }
     }
 
-    private IWindow onError(String response) {
+    private IWindow onError(Map<String, String> response) {
         EXIT_AFTER--;
         if (TEST_MODE && EXIT_AFTER == 0) {
             return null;
         }
         else {
-            String message = Strings.ERROR + response;
+            String message = Strings.ERROR + response.get(Strings.ERROR_KEY);
             this.setMessage(message);
             return show();
         }
@@ -63,8 +68,8 @@ public class LoginWindow implements IWindow {
         String email = inputReader.readString();
         outputPrinter.printText(Strings.WRITE_YOUR_PASSWORD);
         String password = inputReader.readString();
-        String response = LoginController.login(email, password);
-        if (response.startsWith(Strings.SUCCESS)) {
+        Map<String, String> response = LoginController.login(email, password);
+        if (response.containsKey(Strings.TOKEN)) {
             return onSuccess(response);
         }
         else {
