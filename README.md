@@ -40,9 +40,7 @@ one more client.
 * Main Success Scenario:
 1. Accountant chooses the “New Client” option.
 2. System opens the “New Client” window with the “Add client” option and various 
-inputs: 
-a. Required: Organization name, First name, Last name, Email;
-b. Optional: Mobile phone, Currency, Address.
+inputs: Organization name, First name, Last name, Email;
 3. Accountant fills all required fields and presses the "Enter" key.
 4. System opens the “Clients” window and prints a message that a client was added.
 * Alternative Scenario:
