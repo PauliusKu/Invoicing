@@ -3,10 +3,7 @@ package main.client.config;
 import main.client.config.Config;
 import main.client.config.Strings;
 import main.client.interfaces.IWindow;
-import main.client.windows.AddClientWindow;
-import main.client.windows.ClientsWindow;
-import main.client.windows.LoginWindow;
-import main.client.windows.MainMenuWindow;
+import main.client.windows.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +21,7 @@ public class Windows {
         windows.put(Strings.MAIN_MENU, new MainMenuWindow(Config.INPUT_READER, Config.OUTPUT_PRINTER));
         windows.put(Strings.CLIENTS, new ClientsWindow(Config.INPUT_READER, Config.OUTPUT_PRINTER));
         windows.put(Strings.NEW_CLIENT, new AddClientWindow(Config.INPUT_READER, Config.OUTPUT_PRINTER));
+        windows.put(Strings.DELETE_CLIENT, new DeleteClientWindow(Config.INPUT_READER, Config.OUTPUT_PRINTER));
     }
 
     public static IWindow GetWindow(String title) {

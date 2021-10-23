@@ -161,7 +161,7 @@ public class Clients {
         prepareDatabase();
 
         MockPrinter mockPrinter = new MockPrinter();
-        Config.EXIT_AFTER_WINDOW_CHANGES = 6;
+        Config.EXIT_AFTER_WINDOW_CHANGES = 5;
         Config.INPUT_READER = new MockReader(
                 List.of("admin", "admin", "1", "1", "Peter", "", "p.peterson@gmail.com", "Company2", "0", "0")
         );
@@ -171,10 +171,10 @@ public class Clients {
         String clientsTitle = outputs.get(9);
         String chooseOptionText = outputs.get(24);
         String addClientOptionText = outputs.get(25);
-        String deleteClientOptionText =outputs.get(26);
+        String deleteClientOptionText = outputs.get(26);
         String goBackOptionText = outputs.get(27);
         String newClientTitle = outputs.get(28);
-        String addFirstNameText = outputs.get(28);
+        String addFirstNameText = outputs.get(29);
         String addLastNameText = outputs.get(30);
         String addOrganizationText = outputs.get(31);
         String addEmailText = outputs.get(32);
@@ -204,7 +204,7 @@ public class Clients {
         MockPrinter mockPrinter = new MockPrinter();
         Config.EXIT_AFTER_WINDOW_CHANGES = 6;
         Config.INPUT_READER = new MockReader(
-                List.of("admin", "admin", "1", "2", "1", "Y")
+                List.of("admin", "admin", "1", "2", "1", "Y", "3")
         );
         Config.OUTPUT_PRINTER = mockPrinter;
         Client.run();
@@ -219,16 +219,18 @@ public class Clients {
         String chooseClientOptionText = outputs.get(30);
         String areYouSureTitle = outputs.get(31);
         String areYouSureText = outputs.get(32);
-        String clientsTitle2 = outputs.get(33);
-        String clientsMessage = outputs.get(34);
-        String numberOfClientsText = outputs.get(35);
-        String clientsTableNameText = outputs.get(36);
-        String clientTableCell00 = outputs.get(37);
-        String clientTableCell01 = outputs.get(38);
-        String clientTableCell02 = outputs.get(39);
-        String clientTableCell03 = outputs.get(40);
-        String clientTableCell04 = outputs.get(41);
-        String clientTableCell05 = outputs.get(42);
+        String yesText = outputs.get(33);
+        String noText = outputs.get(34);
+        String clientsTitle2 = outputs.get(35);
+        String clientsMessage = outputs.get(36);
+        String numberOfClientsText = outputs.get(37);
+        String clientsTableNameText = outputs.get(38);
+        String clientTableCell00 = outputs.get(39);
+        String clientTableCell01 = outputs.get(40);
+        String clientTableCell02 = outputs.get(41);
+        String clientTableCell03 = outputs.get(42);
+        String clientTableCell04 = outputs.get(43);
+        String clientTableCell05 = outputs.get(44);
 
         Assertions.assertAll(
                 () -> assertEquals("Clients", clientsTitle),
@@ -237,10 +239,12 @@ public class Clients {
                 () -> assertEquals("2) Delete client", deleteClientOptionText),
                 () -> assertEquals("3) Go back", goBackOptionText),
                 () -> assertEquals("Delete client", deleteClientTitle),
-                () -> assertEquals("Choose client ot delete:", chooseClientText),
+                () -> assertEquals("Choose client to delete:", chooseClientText),
                 () -> assertEquals("1) j.johnson@gmail.com", chooseClientOptionText),
                 () -> assertEquals("Are you sure", areYouSureTitle),
                 () -> assertEquals("Are you sure?", areYouSureText),
+                () -> assertEquals("Yes", yesText),
+                () -> assertEquals("No", noText),
                 () -> assertEquals("Clients", clientsTitle2),
                 () -> assertEquals("Success: Client was deleted", clientsMessage),
                 () -> assertEquals("Number of clients that you have: 0", numberOfClientsText),
@@ -261,7 +265,7 @@ public class Clients {
         MockPrinter mockPrinter = new MockPrinter();
         Config.EXIT_AFTER_WINDOW_CHANGES = 6;
         Config.INPUT_READER = new MockReader(
-                List.of("admin", "admin", "1", "2", "1", "N")
+                List.of("admin", "admin", "1", "2", "1", "N", "3")
         );
         Config.OUTPUT_PRINTER = mockPrinter;
         Client.run();
@@ -276,22 +280,24 @@ public class Clients {
         String chooseClientOptionText = outputs.get(30);
         String areYouSureTitle = outputs.get(31);
         String areYouSureText = outputs.get(32);
-        String clientsTitle2 = outputs.get(33);
-        String clientsMessage = outputs.get(34);
-        String numberOfClientsText = outputs.get(35);
-        String clientsTableNameText = outputs.get(36);
-        String clientTableCell00 = outputs.get(37);
-        String clientTableCell01 = outputs.get(38);
-        String clientTableCell02 = outputs.get(39);
-        String clientTableCell03 = outputs.get(40);
-        String clientTableCell04 = outputs.get(41);
-        String clientTableCell05 = outputs.get(42);
-        String clientTableCell06 = outputs.get(43);
-        String clientTableCell07 = outputs.get(44);
-        String clientTableCell08 = outputs.get(45);
-        String clientTableCell09 = outputs.get(46);
-        String clientTableCell10 = outputs.get(47);
-        String clientTableCell11 = outputs.get(48);
+        String yesText = outputs.get(33);
+        String noText = outputs.get(34);
+        String clientsTitle2 = outputs.get(35);
+        String clientsMessage = outputs.get(36);
+        String numberOfClientsText = outputs.get(37);
+        String clientsTableNameText = outputs.get(38);
+        String clientTableCell00 = outputs.get(39);
+        String clientTableCell01 = outputs.get(40);
+        String clientTableCell02 = outputs.get(41);
+        String clientTableCell03 = outputs.get(42);
+        String clientTableCell04 = outputs.get(43);
+        String clientTableCell05 = outputs.get(44);
+        String clientTableCell06 = outputs.get(45);
+        String clientTableCell07 = outputs.get(46);
+        String clientTableCell08 = outputs.get(47);
+        String clientTableCell09 = outputs.get(48);
+        String clientTableCell10 = outputs.get(49);
+        String clientTableCell11 = outputs.get(50);
 
         Assertions.assertAll(
                 () -> assertEquals("Clients", clientsTitle),
@@ -300,10 +306,12 @@ public class Clients {
                 () -> assertEquals("2) Delete client", deleteClientOptionText),
                 () -> assertEquals("3) Go back", goBackOptionText),
                 () -> assertEquals("Delete client", deleteClientTitle),
-                () -> assertEquals("Choose client ot delete:", chooseClientText),
+                () -> assertEquals("Choose client to delete:", chooseClientText),
                 () -> assertEquals("1) j.johnson@gmail.com", chooseClientOptionText),
                 () -> assertEquals("Are you sure", areYouSureTitle),
                 () -> assertEquals("Are you sure?", areYouSureText),
+                () -> assertEquals("Yes", yesText),
+                () -> assertEquals("No", noText),
                 () -> assertEquals("Clients", clientsTitle2),
                 () -> assertEquals("Success: Client was not deleted", clientsMessage),
                 () -> assertEquals("Number of clients that you have: 1", numberOfClientsText),

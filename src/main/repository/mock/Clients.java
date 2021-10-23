@@ -23,13 +23,16 @@ public class Clients implements IClients {
     @Override
     public boolean deleteOneClient(String email) {
         int i = 0;
+        int index = -1;
         for (var client : clients){
             if (Objects.equals(client.email.email, email)){
-                clients.remove(i);
+                index = i;
             }
             i++;
         }
-
+        if (index >= 0){
+            clients.remove(index);
+        }
         return true;
     }
 

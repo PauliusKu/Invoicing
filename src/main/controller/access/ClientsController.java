@@ -87,7 +87,7 @@ public class ClientsController extends Controller {
         response.put(ResponseKey.TABLE.toString(), table);
     }
 
-    public static void deleteClient(String clientEmail) {
+    private static void deleteClient(String clientEmail) {
         var clientsList = clientsRepo.getAllClients();
 
         for(var clientToCheck : clientsList){
