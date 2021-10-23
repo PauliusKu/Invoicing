@@ -89,40 +89,42 @@ public class Clients {
         String clientsTitle = outputs.get(9);
         String chooseOptionText = outputs.get(24);
         String addClientOptionText = outputs.get(25);
-        String goBackOptionText = outputs.get(26);
-        String newClientTitle = outputs.get(27);
-        String addFirstNameText = outputs.get(28);
-        String addLastNameText = outputs.get(29);
-        String addOrganizationText = outputs.get(30);
-        String addEmailText = outputs.get(31);
-        String clientsTitle2 = outputs.get(32);
-        String clientAddedMessage = outputs.get(33);
-        String numberOfClientsText = outputs.get(34);
-        String clientsTableNameText = outputs.get(35);
-        String clientTableCell00 = outputs.get(36);
-        String clientTableCell01 = outputs.get(37);
-        String clientTableCell02 = outputs.get(38);
-        String clientTableCell03 = outputs.get(39);
-        String clientTableCell04 = outputs.get(40);
-        String clientTableCell05 = outputs.get(41);
-        String clientTableCell10 = outputs.get(42);
-        String clientTableCell11 = outputs.get(43);
-        String clientTableCell12 = outputs.get(44);
-        String clientTableCell13 = outputs.get(45);
-        String clientTableCell14 = outputs.get(46);
-        String clientTableCell15 = outputs.get(47);
-        String clientTableCell20 = outputs.get(48);
-        String clientTableCell21 = outputs.get(49);
-        String clientTableCell22 = outputs.get(50);
-        String clientTableCell23 = outputs.get(51);
-        String clientTableCell24 = outputs.get(52);
-        String clientTableCell25 = outputs.get(53);
+        String deleteClientOptionText = outputs.get(26);
+        String goBackOptionText = outputs.get(27);
+        String newClientTitle = outputs.get(28);
+        String addFirstNameText = outputs.get(29);
+        String addLastNameText = outputs.get(30);
+        String addOrganizationText = outputs.get(31);
+        String addEmailText = outputs.get(32);
+        String clientsTitle2 = outputs.get(33);
+        String clientAddedMessage = outputs.get(34);
+        String numberOfClientsText = outputs.get(35);
+        String clientsTableNameText = outputs.get(36);
+        String clientTableCell00 = outputs.get(37);
+        String clientTableCell01 = outputs.get(38);
+        String clientTableCell02 = outputs.get(39);
+        String clientTableCell03 = outputs.get(40);
+        String clientTableCell04 = outputs.get(41);
+        String clientTableCell05 = outputs.get(42);
+        String clientTableCell10 = outputs.get(43);
+        String clientTableCell11 = outputs.get(44);
+        String clientTableCell12 = outputs.get(45);
+        String clientTableCell13 = outputs.get(46);
+        String clientTableCell14 = outputs.get(47);
+        String clientTableCell15 = outputs.get(48);
+        String clientTableCell20 = outputs.get(49);
+        String clientTableCell21 = outputs.get(50);
+        String clientTableCell22 = outputs.get(51);
+        String clientTableCell23 = outputs.get(52);
+        String clientTableCell24 = outputs.get(53);
+        String clientTableCell25 = outputs.get(54);
 
         Assertions.assertAll(
                 () -> assertEquals("Clients", clientsTitle),
                 () -> assertEquals("Choose from the following options: ", chooseOptionText),
                 () -> assertEquals("1) Add client", addClientOptionText),
-                () -> assertEquals("2) Go back", goBackOptionText),
+                () -> assertEquals("2) Delete client", deleteClientOptionText),
+                () -> assertEquals("3) Go back", goBackOptionText),
                 () -> assertEquals("New client", newClientTitle),
                 () -> assertEquals("Write clients' first name:", addFirstNameText),
                 () -> assertEquals("Write clients' last name:", addLastNameText),
@@ -169,20 +171,22 @@ public class Clients {
         String clientsTitle = outputs.get(9);
         String chooseOptionText = outputs.get(24);
         String addClientOptionText = outputs.get(25);
-        String goBackOptionText = outputs.get(26);
-        String newClientTitle = outputs.get(27);
+        String deleteClientOptionText =outputs.get(26);
+        String goBackOptionText = outputs.get(27);
+        String newClientTitle = outputs.get(28);
         String addFirstNameText = outputs.get(28);
-        String addLastNameText = outputs.get(29);
-        String addOrganizationText = outputs.get(30);
-        String addEmailText = outputs.get(31);
-        String newClientTitle2 = outputs.get(32);
-        String errorMessage = outputs.get(33);
+        String addLastNameText = outputs.get(30);
+        String addOrganizationText = outputs.get(31);
+        String addEmailText = outputs.get(32);
+        String newClientTitle2 = outputs.get(33);
+        String errorMessage = outputs.get(34);
 
         Assertions.assertAll(
                 () -> assertEquals("Clients", clientsTitle),
                 () -> assertEquals("Choose from the following options: ", chooseOptionText),
                 () -> assertEquals("1) Add client", addClientOptionText),
-                () -> assertEquals("2) Go back", goBackOptionText),
+                () -> assertEquals("2) Delete client", deleteClientOptionText),
+                () -> assertEquals("3) Go back", goBackOptionText),
                 () -> assertEquals("New client", newClientTitle),
                 () -> assertEquals("Write clients' first name:", addFirstNameText),
                 () -> assertEquals("Write clients' last name:", addLastNameText),
@@ -190,6 +194,63 @@ public class Clients {
                 () -> assertEquals("Write clients' email:", addEmailText),
                 () -> assertEquals("New client", newClientTitle2),
                 () -> assertEquals("Error occurred: [Empty last name]", errorMessage)
+        );
+    }
+
+    @Test
+    public void testDeleteClientSuccessScenario() {
+        prepareDatabase();
+
+        MockPrinter mockPrinter = new MockPrinter();
+        Config.EXIT_AFTER_WINDOW_CHANGES = 6;
+        Config.INPUT_READER = new MockReader(
+                List.of("admin", "admin", "1", "2", "1", "Y")
+        );
+        Config.OUTPUT_PRINTER = mockPrinter;
+        Client.run();
+        List<String> outputs = mockPrinter.getOutputs();
+        String clientsTitle = outputs.get(9);
+        String chooseOptionText = outputs.get(24);
+        String addClientOptionText = outputs.get(25);
+        String deleteClientOptionText = outputs.get(26);
+        String goBackOptionText = outputs.get(27);
+        String deleteClientTitle = outputs.get(28);
+        String chooseClientText = outputs.get(29);
+        String chooseClientOptionText = outputs.get(30);
+        String areYouSureTitle = outputs.get(31);
+        String areYouSureText = outputs.get(32);
+        String clientsTitle2 = outputs.get(33);
+        String clientsMessage = outputs.get(34);
+        String numberOfClientsText = outputs.get(35);
+        String clientsTableNameText = outputs.get(36);
+        String clientTableCell00 = outputs.get(37);
+        String clientTableCell01 = outputs.get(38);
+        String clientTableCell02 = outputs.get(39);
+        String clientTableCell03 = outputs.get(40);
+        String clientTableCell04 = outputs.get(41);
+        String clientTableCell05 = outputs.get(42);
+
+        Assertions.assertAll(
+                () -> assertEquals("Clients", clientsTitle),
+                () -> assertEquals("Choose from the following options: ", chooseOptionText),
+                () -> assertEquals("1) Add client", addClientOptionText),
+                () -> assertEquals("2) Delete client", deleteClientOptionText),
+                () -> assertEquals("3) Go back", goBackOptionText),
+                () -> assertEquals("Delete client", deleteClientTitle),
+                () -> assertEquals("Choose client ot delete:", chooseClientText),
+                () -> assertEquals("1) j.johnson@gmail.com", chooseClientOptionText),
+                () -> assertEquals("Are you sure", areYouSureTitle),
+                () -> assertEquals("Are you sure?", areYouSureText),
+                () -> assertEquals("Clients", clientsTitle2),
+                () -> assertEquals("Success: Client was deleted", clientsMessage),
+                () -> assertEquals("Number of clients that you have: 0", numberOfClientsText),
+                () -> assertEquals("Clients information", clientsTableNameText),
+                () -> assertEquals("First name", clientTableCell00),
+                () -> assertEquals("Last name", clientTableCell01),
+                () -> assertEquals("Email", clientTableCell02),
+                () -> assertEquals("Organization", clientTableCell03),
+                () -> assertEquals("Invoiced amount (EUR)", clientTableCell04),
+                () -> assertEquals("Received amount (EUR)", clientTableCell05)
         );
     }
 
