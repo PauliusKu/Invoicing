@@ -7,6 +7,7 @@ import main.controller.util.LoginValidator;
 import main.domain.user.UserDetails;
 import main.domain.user.UserLogin;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class LoginController extends Controller {
@@ -29,6 +30,8 @@ public class LoginController extends Controller {
         validator.validate(userLogin);
 
         var errors = validator.getErrorMessages();
+
+        response = new HashMap<>();
 
         if(!errors.isEmpty())
             response.put(ResponseKey.ERROR.toString(), "Error occurred: " + errors);
