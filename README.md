@@ -48,4 +48,20 @@ inputs: Organization name, First name, Last name, Email;
 4. System stays in “New Client” window and prints a message which of the required 
 parameter is not filled.
 
-
+## 3 Cycle
+### EBFR022 Delete Client
+* Primary Actor: Accountant
+* Preconditions: Accountant is logged in the system and is in the “Clients” window that 
+has a “Delete Client” option.
+* Postconditions: Chosen client is deleted from the system and the “Clients” window shows 
+one less client.
+* Main Success Scenario:
+1. Accountant chooses the “Delete Client” option.
+2. System opens the “Delete Client” window with option which client to delete.
+3. Accountant chooses one client and presses the "Enter" key.
+4. System opens "Are you sure?" window and asks if accountant is sure about deletion.
+5. Accountant chooses "Yes" and presses "Enter" key.   
+6. System opens the “Clients” window and prints a message that a client was deleted.
+* Alternative Scenario:
+5. Accountant chooses "No" and presses "Enter" key.
+6. System opens “Clients” window and prints a message that client was not deleted.
