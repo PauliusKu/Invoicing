@@ -18,7 +18,7 @@ public class LoginController extends Controller {
         return getMapResponse();
     }
 
-    public static void doLogin(String email, String password){
+    private static void doLogin(String email, String password){
         UserLogin userLogin = new UserLogin();
         userLogin.email.email = email;
         userLogin.password.password = password;

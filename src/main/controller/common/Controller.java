@@ -22,6 +22,10 @@ public class Controller {
 
         if (response.isEmpty()) {
             response.put(ResponseKey.ERROR.toString(), "Other error occurred!");
+            return response;
+        }
+        else if (response.containsKey(ResponseKey.ERROR.toString())){
+            return response;
         }
 
         response.put(ResponseKey.TOKEN.toString(), getNewToken());
