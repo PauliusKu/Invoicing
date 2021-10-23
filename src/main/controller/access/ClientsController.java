@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class ClientsController extends Controller {
 
-    public static List<List<String>> getClients(String token) {
+    public static Map<String, Object> getClients(String token) {
         return null;
     }
 }
