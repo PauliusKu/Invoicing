@@ -40,18 +40,20 @@ public class ClientsWindow extends Window {
         outputPrinter.printTable(createTable(table));
         outputPrinter.printText(Strings.CHOOSE_FROM_THE_FOLLOWING_OPTIONS);
         outputPrinter.printText(Strings.ADD_CLIENT_1);
-        outputPrinter.printText(Strings.GO_BACK_2);
+        outputPrinter.printText(Strings.DELETE_CLIENT_2);
+        outputPrinter.printText(Strings.GO_BACK_3);
         String option = inputReader.readString();
         Config.WINDOW_CHANGES++;
-        if (option.equals(Strings.ONE)){
-            return Windows.GetWindow(Strings.NEW_CLIENT).show();
-        }
-        else if (option.equals(Strings.TWO)){
-            return Windows.GetWindow(Strings.MAIN_MENU).show();
-        }
-        else {
-            MESSAGE = Strings.UNKNOWN_OPTION_WAS_CHOSEN;
-            return show();
+        switch (option) {
+            case Strings.ONE:
+                return Windows.GetWindow(Strings.NEW_CLIENT).show();
+            case Strings.TWO:
+                return Windows.GetWindow(Strings.DELETE_CLIENT).show();
+            case Strings.THREE:
+                return Windows.GetWindow(Strings.MAIN_MENU).show();
+            default:
+                MESSAGE = Strings.UNKNOWN_OPTION_WAS_CHOSEN;
+                return show();
         }
     }
 
