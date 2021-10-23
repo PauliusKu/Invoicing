@@ -6,7 +6,7 @@ import main.client.interfaces.IOutputPrinter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MockLoginPrinter implements IOutputPrinter {
+public class MockPrinter implements IOutputPrinter {
     private final List<String> outputs = new ArrayList<>();
     @Override
     public void printTitle(String title) {

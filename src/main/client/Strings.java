@@ -13,7 +13,7 @@ public class Strings {
     public static final String MAIN_MENU = "Main menu";
     public static final String TITLE = "Title: ";
     public static final String MESSAGE = "Message: ";
-//    public static final String ;
+    public static final String ERROR = "Error: ";
 //    public static final String ;
 //    public static final String ;
 //    public static final String ;

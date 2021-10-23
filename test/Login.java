@@ -1,7 +1,7 @@
 import main.client.Client;
 import main.client.Config;
-import main.client.mocks.MockLoginPrinter;
-import main.client.mocks.MockLoginReader;
+import main.client.mocks.MockPrinter;
+import main.client.mocks.MockReader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.List;
@@ -12,11 +12,11 @@ class Login {
     @Test
     public void testLoginSuccessScenario() {
         //when
-        MockLoginPrinter mockLoginPrinter = new MockLoginPrinter();
-        Config.INPUT_READER = new MockLoginReader("admin", "admin");
-        Config.OUTPUT_PRINTER = mockLoginPrinter;
+        MockPrinter mockPrinter = new MockPrinter();
+        Config.INPUT_READER = new MockReader(List.of("admin", "admin"));
+        Config.OUTPUT_PRINTER = mockPrinter;
         Client.run();
-        List<String> outputs = mockLoginPrinter.getOutputs();
+        List<String> outputs = mockPrinter.getOutputs();
         String loginWindowName = outputs.get(0);
         String loginMessage = outputs.get(1);
         String inputEmailText = outputs.get(2);
@@ -37,11 +37,11 @@ class Login {
 
     @Test
     public void testLoginErrorScenario() {
-        MockLoginPrinter mockLoginPrinter = new MockLoginPrinter();
-        Config.INPUT_READER = new MockLoginReader("admin", "not_admin");
-        Config.OUTPUT_PRINTER = mockLoginPrinter;
+        MockPrinter mockPrinter = new MockPrinter();
+        Config.INPUT_READER = new MockReader(List.of("admin", "admin"));
+        Config.OUTPUT_PRINTER = mockPrinter;
         Client.run();
-        List<String> outputs = mockLoginPrinter.getOutputs();
+        List<String> outputs = mockPrinter.getOutputs();
         String loginWindowName = outputs.get(0);
         String loginMessage = outputs.get(1);
         String inputEmailText = outputs.get(2);

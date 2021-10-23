@@ -44,7 +44,8 @@ public class LoginWindow implements IWindow {
             return null;
         }
         else {
-            this.setMessage(response);
+            String message = Strings.ERROR + response;
+            this.setMessage(message);
             return show();
         }
     }
